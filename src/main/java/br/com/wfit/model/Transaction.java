@@ -12,6 +12,8 @@ public class Transaction {
     private String tipoChave;
     private String chave;
     private String linha;
+    private Long agencia;
+    private Long conta;
     private StatusPix status;
     private LocalDateTime data;
 
@@ -55,6 +57,22 @@ public class Transaction {
         this.linha = linha;
     }
 
+    public Long getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Long agencia) {
+        this.agencia = agencia;
+    }
+
+    public Long getConta() {
+        return conta;
+    }
+
+    public void setConta(Long conta) {
+        this.conta = conta;
+    }
+
     public StatusPix getStatus() {
         return status;
     }
@@ -69,6 +87,18 @@ public class Transaction {
 
     public void setData(LocalDateTime data) {
         this.data = data;
+    }
+
+    public void analisada() {
+        setStatus(StatusPix.APPROVED);
+    }
+
+    public void suspeitaFraude() {
+        setStatus(StatusPix.REPROVED);
+    }
+
+    public void analiseHumana() {
+        setStatus(StatusPix.IN_PROCESS);
     }
 
     @Override
